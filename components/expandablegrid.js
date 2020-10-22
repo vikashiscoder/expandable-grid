@@ -42,6 +42,7 @@ export default class ExpandableGrid extends React.Component {
   validTDs(data){
     //id and nextLevel are component specific properties
     let result = [];
+    this.props.
     for (const prop in data) {
       if (prop != "id" && prop != "nextLevel") {
         let element = <td>{data[prop]}</td>;
