@@ -42,18 +42,14 @@ export default class ExpandableGrid extends React.Component {
   validTDs(data){
     //id and nextLevel are component specific properties
     let result = [];
-    this.props.
-    for (const prop in data) {
-      if (prop != "id" && prop != "nextLevel") {
-        let element = <td>{data[prop]}</td>;
-        result.push(element);
-      }
-    }
+    this.props.properties.map(x=>{
+      result.push(<td>{data[x]}</td>)
+    })
       return result;
   };
 
 
-  showRow = data => {
+  showRow = (data,skipTDs) => {
     return (
       <React.Fragment>
         <tr onClick={() => this.handleClick(data)} key={data.id}>
@@ -82,7 +78,7 @@ export default class ExpandableGrid extends React.Component {
           <th>Name</th>
           <th style={{ width: "200px" }}>Color</th>
         </tr>
-        {this.state.data.map(x => this.showRow(x))}
+        {this.state.data.map(x => this.showRow(x,0))}
       </table>
     );
   }
